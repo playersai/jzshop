@@ -1,0 +1,56 @@
+{literal}
+<style type="text/css">
+body,td { font-size:13px; }
+</style>
+{/literal}
+<h1 align="center">{$lang.order_info}</h1>
+<table width="100%" cellpadding="1">
+    <tr>
+        <td width="8%">客户名称：</td>
+        <td>{if $order.user_name}{$order.user_name}{else}{$lang.anonymous}{/if}<!-- 购货人姓名 --></td>
+        <td align="right">{$lang.label_order_time}</td><td>{$order.order_time}<!-- 下订单时间 --></td>
+        <td align="right">{$lang.label_payment}</td><td>现场到付<!-- 支付方式 --></td>
+        <td align="right">{$lang.print_order_sn}</td><td>{$order.order_sn}<!-- 订单号 --></td>
+    </tr>
+    <tr>
+        <td>{$lang.label_pay_time}</td><td>{$order.pay_time}</td><!-- 付款时间 -->
+        <td align="right">处理时间：</td><td>{$order.shipping_time}<!-- 发货时间 --></td>
+        <td align="right"></td><td></td>
+        <td align="right"></td><td></td>
+    </tr>
+    <tr>
+        <td>联系地址：</td>
+        <td colspan="7">
+        [{$order.region}]&nbsp;{$order.address}&nbsp;<!-- 收货人地址 -->
+        联系人：{$order.consignee}&nbsp;<!-- 收货人姓名 -->
+        {if $order.zipcode}{$lang.label_zipcode}{$order.zipcode}&nbsp;{/if}<!-- 邮政编码 -->
+        {if $order.tel}{$lang.label_tel}{$order.tel}&nbsp; {/if}<!-- 联系电话 -->
+        {if $order.mobile}{$lang.label_mobile}{$order.mobile}{/if}<!-- 手机号码 -->
+        </td>
+    </tr>
+</table>
+<table width="100%" border="1" style="border-collapse:collapse;border-color:#000;">
+    <tr align="center">
+        <td bgcolor="#cccccc">服务名称</td>
+        <td bgcolor="#cccccc">服务提供商</td>
+    </tr>
+    <!-- {foreach from=$goods_list item=goods key=key} -->
+    <tr>
+        <td>&nbsp;{$goods.goods_name}</td>
+        <td>&nbsp;{$goods.suppliers_name} </td>
+    </tr>
+    <!-- {/foreach} -->
+
+</table>
+
+<table width="100%" border="0">
+    <tr><!-- 网店名称, 网店地址, 网店URL以及联系电话 -->
+        <td>
+        {$shop_name}（{$shop_url}）
+        {$lang.label_shop_address}{$shop_address}&nbsp;&nbsp;{$lang.label_service_phone}{$service_phone}
+        </td>
+    </tr>
+    <tr align="right"><!-- 订单操作员以及订单打印的日期 -->
+        <td>{$lang.label_print_time}{$print_time}&nbsp;&nbsp;&nbsp;{$lang.action_user}{$action_user}</td>
+    </tr>
+</table>
